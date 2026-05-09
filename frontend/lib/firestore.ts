@@ -32,6 +32,7 @@ export interface PredictionRecord {
     placed: boolean;
     feature_importance: { factor: string; contribution: number }[];
   };
+  source?: string;
   timestamp?: any;
 }
 
@@ -45,7 +46,11 @@ export interface SkillAnalysisRecord {
     missing_skills: string[];
     match_rate: number;
     skill_gap_index: number;
-    recommendations: { skill: string; course: string; platform: string; url: string }[];
+    recommendations: {
+      skill: string;
+      courses: { course: string; platform: string; url: string }[];
+      internships: { company: string; role: string; location: string; url: string }[];
+    }[];
     radar_data: { skill: string; has: number }[];
     total_required: number;
     total_matched: number;
@@ -122,8 +127,24 @@ export async function getSkillAnalyses(userId: string, maxCount = 50): Promise<S
           match_rate: 75,
           skill_gap_index: 0.25,
           recommendations: [
-            { skill: "JavaScript", course: "Modern JavaScript", platform: "Udemy", url: "https://udemy.com/js" },
-            { skill: "CSS", course: "CSS Flexbox and Grid", platform: "YouTube", url: "https://youtube.com/css" }
+            {
+              skill: "JavaScript",
+              courses: [
+                { course: "Modern JavaScript", platform: "Udemy", url: "https://udemy.com/js" }
+              ],
+              internships: [
+                { company: "Tech Corp", role: "Frontend Intern", location: "Remote", url: "https://example.com/apply" }
+              ]
+            },
+            {
+              skill: "CSS",
+              courses: [
+                { course: "CSS Flexbox and Grid", platform: "YouTube", url: "https://youtube.com/css" }
+              ],
+              internships: [
+                { company: "Design Studio", role: "UI Intern", location: "Remote", url: "https://example.com/apply" }
+              ]
+            }
           ],
           radar_data: [
             { skill: "React", has: 0.8 },

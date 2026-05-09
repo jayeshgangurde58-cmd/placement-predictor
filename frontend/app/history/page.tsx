@@ -88,7 +88,7 @@ export default function HistoryPage() {
               id={`tab-${key}`}
               style={{
                 display: "flex", alignItems: "center", gap: 8,
-                padding: "10px 20px", borderRadius: 10, border: "none",
+                padding: "10px 20px", borderRadius: 10,
                 background: tab === key ? "rgba(124,58,237,0.25)" : "transparent",
                 border: tab === key ? "1px solid rgba(124,58,237,0.4)" : "1px solid transparent",
                 color: tab === key ? "#a78bfa" : "#64748b",

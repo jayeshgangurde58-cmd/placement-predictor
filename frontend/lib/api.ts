@@ -35,6 +35,8 @@ export interface PredictResponse {
     aptitude: number;
     programming: number;
     communication: number;
+    tenth_percentage: number;
+    twelfth_percentage: number;
   };
   explanation?: string;
 }
